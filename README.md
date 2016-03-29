@@ -1,11 +1,11 @@
 # Student-Fee-Management-System
 
-Requirements-
+#Requirements-
 
 1. Install the XAMPP
 2. Copy the files folder(CS223/files) in the C:\\xampp/htdocs
 
-Installing the DB:-
+#Installing the DB:-
 
 1. Run the XAMPP application (make sure that the apache and mysql are running).
 
@@ -20,7 +20,7 @@ Installing the DB:-
 
 
 
-Accessing the system
+##Accessing the system
 
 1.Run the XAMPP application (make sure that the apache and mysql are running)
 
