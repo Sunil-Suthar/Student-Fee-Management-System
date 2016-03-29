@@ -1,0 +1,57 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	margin:0;
+	padding:0;
+	
+}
+body{
+	background:pink;
+}
+.main_wrapper{
+	width:1000px;
+	overflow:auto;
+	margin:auto;
+	position:relative;
+	
+}
+.header{
+	width:1000px;
+	height:120px;
+	margin:0 auto;
+	background-image:url(../images/admin_banner.png);
+	border-bottom:5px groove orange;
+}
+
+.left{
+	width:795x;
+	min-height:600px;
+	background-image:url(../images/left.png) ;
+	float:left;
+	position:absolute;
+	top:125px;
+}
+.right{
+	width:200px;
+	min-height:600px;
+	float:right;
+	border-left:5px groove orange;
+	background:#187eae;
+}
+.right a{
+	text-decoration:none;
+	color:white;
+	text-align:left;
+	font-size:18px;
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+	padding:6px;
+	margin:6px;
+	display:block;
+}
+
+.right a:hover{
+	text-decoration:underline;
+	font-weight:bolder;
+	color:orange;
+}
+
