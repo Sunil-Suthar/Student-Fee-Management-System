@@ -39,7 +39,7 @@ Proect Was  Made Using HTML, CSS, BOOTSTRAP, PHP.
 
 type the url in the Browser ---->  http://studentfeemanagement.esy.es/
 
-login id for admin is --> sunil@gmail.com
-              password ---> suni123
+login id for student is --> student1@gmail.com
+              password ---> student1
               
               ######  ENJOY! :)      ######
