@@ -37,6 +37,8 @@ Proect Was  Made Using HTML, CSS, BOOTSTRAP, PHP.
 
 #######---> live Working Website      <---#######
 
+Because of free hosting loading speed may be slow due to limited broadcasting speed.
+
 type the url in the Browser ---->  http://studentfeemanagement.esy.es/
 
 login id for student is --> student1@gmail.com
