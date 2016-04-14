@@ -1,6 +1,6 @@
 # Student-Fee-Management-System
 
-Proect Was  Made Using HTML, CSS, BOOTSTRAP, PHP.
+Project Was  Made Using HTML, CSS, BOOTSTRAP, PHP.
 
 
 ##Requirements-
