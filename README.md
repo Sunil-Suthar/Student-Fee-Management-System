@@ -1,11 +1,14 @@
 # Student-Fee-Management-System
 
-Requirements-
+Proect Was  Made Using HTML, CSS, BOOTSTRAP, PHP.
+
+
+##Requirements-
 
 1. Install the XAMPP
 2. Copy the files folder(CS223/files) in the C:\\xampp/htdocs
 
-Installing the DB:-
+##Installing the DB:-
 
 1. Run the XAMPP application (make sure that the apache and mysql are running).
 
@@ -20,7 +23,7 @@ Installing the DB:-
 
 
 
-Accessing the system
+##Accessing the system
 
 1.Run the XAMPP application (make sure that the apache and mysql are running)
 
@@ -34,9 +37,11 @@ Accessing the system
 
 #######---> live Working Website      <---#######
 
+Because of free hosting loading speed may be slow due to limited broadcasting speed.
+
 type the url in the Browser ---->  http://studentfeemanagement.esy.es/
 
-login id for admin is --> sunil@gmail.com
-              password ---> suni123
+login id for student is --> student1@gmail.com
+              password ---> student1
               
               ######  ENJOY! :)      ######
