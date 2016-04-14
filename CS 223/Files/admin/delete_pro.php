@@ -1,8 +1,13 @@
 <?php 
-if(!isset($_SESSION['user_email'])){
+if(isset($_SESSION['user_email'])){
+  
+    echo " <script> window.open('index1.php?view_profile1','_self')</script>";
+    }
+
+    elseif(!isset($_SESSION['user_email1'])){
 	
-	echo " <script> window.open('login.php?not_admin=You are not an Admin!','_self')</script>";
-}
+	  echo " <script> window.open('../index.php','_self')</script>";
+    }
 else{
 	?>
 

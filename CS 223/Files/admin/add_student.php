@@ -5,10 +5,16 @@
  
  //include function file
   //include 'includes/connection.php';
-    if(!isset($_SESSION['user_email'])){
-	
-	  echo " <script> window.open('login.php?not_admin=You are not an Admin!!!','_self')</script>";
+    if(isset($_SESSION['user_email'])){
+  
+    echo " <script> window.open('index1.php?view_profile1','_self')</script>";
     }
+
+    elseif(!isset($_SESSION['user_email1'])){
+	
+	  echo " <script> window.open('../index.php','_self')</script>";
+    }
+
     else{
   
 ?>
@@ -28,7 +34,7 @@
 </head>
 <body bgcolor="#ededeb">
 <div class="container">
-    <form class="form-horizontal" role="form" action="student_add.php" method="post" enctype="multipart/form-data">
+  <form class="form-horizontal" role="form" action="student_add.php" method="post" enctype="multipart/form-data">
   <div class="form-group">
     <label class="control-label col-sm-2" for="student_id">Student ID</label>
     <div class="col-sm-8">
@@ -51,10 +57,10 @@
     <label class="control-label col-sm-2">Category</label>
                    <div class="col-sm-8"> 
                                         <select name="student_cat1" required>
-                                        <option > Select Category</option>
-                                        <option>GEN</option>
-                                        <option>OBC</option>
-                                        <option>SC/ST</option>
+                                        <option value = "" > Select Category</option>
+                                        <option value = "GEN" >GEN</option>
+                                        <option value = "OBC" >OBC</option>
+                                        <option value = "SC/ST" >SC/ST</option>
                                         </select>
                     </div>
         </div>
@@ -62,9 +68,10 @@
     <label class="control-label col-sm-2">Degree</label>
                    <div class="col-sm-8"> 
                                         <select name="student_cat2" required>
-                                        <option > Select Degree</option>
-                                        <option>UG</option>
-                                        <option>PG</option>
+                                        <option value = "" > Select Degree</option>
+                                        <option value = "UG" >UG</option>
+                                        <option value = "PHD" >PHD</option>
+                                        <option value = "M.TECH" >M.TECH</option>
                                         
                                         </select>
                     </div>
@@ -80,26 +87,34 @@
     <label class="control-label col-sm-2">Student Year</label>
                    <div class="col-sm-8"> 
                                         <select name="student_year" required>
-                                        <option > Select Year</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
+                                        <option value = ""   > Select Year</option>
+                                        <option value = "1"  >1</option>
+                                        <option value = "2"  >2</option>
+                                        <option value = "3"  >3</option>
+                                        <option value = "4"  >4</option>
                                         </select>
                     </div>
         </div>
         
-        
-        <div class="form-group">
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="student_other_fee">Other Fees</label>
+    <div class="col-sm-8"> 
+      <input type="number" class="form-control" min = "0" max = "9999999999" name="student_other_fee" required="true">
+    </div>
+  </div>    
+    
+    <div class="form-group">
     <label class="control-label col-sm-2" for="student_addr">Address</label>
     <div class="col-sm-8"> 
       <input type="text" class="form-control" name="student_addr" required="true">
     </div>
   </div>
+    
     <div class="form-group">
     <label class="control-label col-sm-2" for="student_contect">Contact Number</label>
     <div class="col-sm-8"> 
-      <input type="tel" class="form-control" name="student_contect" required="true">
+      <input type="tel" pattern=".{10}" class="form-control" name="student_contect"  required="true">
+      
     </div>
   </div>
         <div class="form-group">

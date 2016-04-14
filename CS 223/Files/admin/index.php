@@ -2,10 +2,17 @@
 
 <?php
 
-if(!isset($_SESSION['user_email'])){
+ //$role = $_SESSION['user_role'] ;
+
+if(isset($_SESSION['user_email'])){
+  
+    echo " <script> window.open('index1.php?view_profile1','_self')</script>";
+    }
+
+    elseif(!isset($_SESSION['user_email1'])){
 	
-	echo " <script> window.open('login.php?not_admin=You are not an Admin!','_self')</script>";
-}
+	  echo " <script> window.open('../index.php','_self')</script>";
+    }
 else{
 ?>
 <!DOCTYPE html>
@@ -110,10 +117,14 @@ else{
 			  include("ugfee_edit.php");
 		  }
 		  
-		  if(isset($_GET['pgfee_edit'])){
-			  include("pgfee_edit.php");
+		  if(isset($_GET['phdfee_edit'])){
+			  include("phdfee_edit.php");
+		  }
+		   if(isset($_GET['mtfee_edit'])){
+			  include("mtfee_edit.php");
 		  }
 		  
+
 		  if(isset($_GET['view_complain'])){
 			  include("view_complain.php");
 		  }
@@ -123,6 +134,9 @@ else{
 			  include("view_comp.php");
 		  }
 		  
+		  if(isset($_GET['app_comp'])){
+			  include("app_comp.php");
+		  }
 		  
 	      ?>
            </div>

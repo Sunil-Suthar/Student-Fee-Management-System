@@ -15,9 +15,14 @@
  
  //include function file
   //include 'includes/connection.php';
-    if(!isset($_SESSION['user_email'])){
-	
-	  echo " <script> window.open('login.php?not_admin=You are not an Admin!!!','_self')</script>";
+    if(isset($_SESSION['user_email1'])){
+  
+    echo " <script> window.open('index.php?view_profile','_self')</script>";
+    }  
+
+  elseif(!isset($_SESSION['user_email'])){
+  
+    echo " <script> window.open('../index.php','_self')</script>";
     }
     else{
   
@@ -38,7 +43,10 @@
         //echo $stu_id;
         $stu_name = $row_pro['student_name'];
         $stu_email = $row_pro['student_email'];
+        $stu_cat1 = $row_pro['student_cat1'];
+       $stu_cat2 = $row_pro['student_cat2'];
         $year = $row_pro['year'];
+        $year1 = 'Y_'.$year;
         $stu_contect = $row_pro['student_contect'];
 
         $sem_fee = $row_pro['semester_fee'];
@@ -56,6 +64,26 @@
         $sem_ids = $row_pro['sem_id'];
         $mess_ids = $row_pro['mess_id'];
         $other_ids= $row_pro['other_id'];
+     
+      $other_fee1 = $row_pro['Other_Fee_Charge'];
+      
+      if($stu_cat2 == 'UG'){ $table = 'ugfeestructure' ; }
+        elseif($stu_cat2 == 'PHD'){$table = 'phdfeestructure' ;}
+        else{$table = 'mtfeestructure' ;}
+
+    //if($pay_cat == 'Semester Fees'){
+        $get_pro1 = "SELECT * FROM $table WHERE catagory = '$stu_cat1'"; 
+        $run_pro1 = mysqli_query($con,$get_pro1);
+        $row_pro1 = mysqli_fetch_array($run_pro1);
+        $stu_fee_sem = $row_pro1[$year1];
+        //echo $stu_fee;
+    // }   
+    //elseif($pay_cat == 'Mess Fees'){
+        $stu_fee_mess = 12000;
+    //}
+   // elseif($pay_cat == 'Other Fees'){
+        $stu_fee_other = $other_fee1;      
+    // }
         
   }
 ?>
@@ -112,8 +140,13 @@
             <th style="text-align:center;"> Candidate Contect </th>    
             <th  style="text-align:center;"> +91-<?php echo $stu_contect ?> </th>
            </tr>
+          <tr>
             <th style="text-align:center;"> Transaction Date </th>    
             <th  style="text-align:center;"> <?php echo $sem_fee_d ?> </th>
+           </tr>
+          <tr>
+            <th style="text-align:center;"> Amount </th>    
+            <th  style="text-align:center;"> <?php echo $stu_fee_sem ?> </th>
            </tr>
            <tr  >
             <th style="text-align:center;"> Payment Mode </th>    
@@ -162,8 +195,13 @@
             <th style="text-align:center;"> Candidate Contect </th>    
             <th  style="text-align:center;"> +91-<?php echo $stu_contect ?> </th>
            </tr>
+          <tr>
             <th style="text-align:center;"> Transaction Date </th>    
             <th  style="text-align:center;"> <?php echo $mess_fee_d ?> </th>
+           </tr>
+          <tr>
+            <th style="text-align:center;"> Amount </th>    
+            <th  style="text-align:center;"> <?php echo $stu_fee_mess ?> </th>
            </tr>
            <tr  >
             <th style="text-align:center;"> Payment Mode </th>    
@@ -210,8 +248,13 @@
             <th style="text-align:center;"> Candidate Contect </th>    
             <th  style="text-align:center;"> +91-<?php echo $stu_contect ?> </th>
            </tr>
+          <tr>
             <th style="text-align:center;"> Transaction Date </th>    
             <th  style="text-align:center;"> <?php echo $other_fee_d ?> </th>
+           </tr>
+          <tr>
+            <th style="text-align:center;"> Amount </th>    
+            <th  style="text-align:center;"> <?php echo $stu_fee_other ?> </th>
            </tr>
            <tr  >
             <th style="text-align:center;"> Payment Mode </th>    

@@ -2,35 +2,44 @@
 
   require('includes/connection.php');  //include connection file
  require'functions.php'; 
-        //include 'includes/connection.php';
-        session_start();
- 		
+       
 
 
-
-		if(isset($_POST['update_post']))
-		{
-					$stu_email = $_SESSION['user_email'];
-
+if(isset($_GET['payment_fee1'])){
+  
+	  if(isset($_GET['fee_cat'])){
+        
+        if(isset($_GET['pay_mode'])){
+           
+				    $stu_email = $_SESSION['user_email'];
+                 
 					$get_pro = "SELECT*FROM student WHERE student_email= '$stu_email'";
 
 					$run_pro = mysqli_query($con,$get_pro);
 					$row_pro = mysqli_fetch_array($run_pro);
 
 					$sem_fee = $row_pro['semester_fee'];
+         
 					$mess_fee = $row_pro['mess_fee'];
+       
 					$other_fee = $row_pro['other_fee'];
+            
 				//getting the text data from the fields
 
-                $pay_cat = $_POST['payment_cat'];
-                $pay_mode = $_POST['payment_mode'];
-				
+                $pay_fee= $_GET['payment_fee1'];
+                 
+                  $pay_cat = $_GET['fee_cat'];
+        
+               
+                $pay_mode = $_GET['pay_mode'];
+            
 				//getting the image data from the field	
-				if ($pay_cat == 'Semester Fees') {
+                if($pay_cat ==' Semester Fees '){
+                       
 						if ($sem_fee == 'Done') {
 							
 						 	echo "<script> alert('Sorry!!  Semester Fees Already Paid')</script>";
-							echo '<META  HTTP-EQUIV="Refresh" Content = "0.0001 ; URL = index.php?fee_receipt">';	
+							echo '<META  HTTP-EQUIV="Refresh" Content = "0.0001 ; URL = index1.php?fee_receipt1">';	
 						}
 						else {
 							$random = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
@@ -39,18 +48,18 @@
 							if(mysqli_query($con, $update_payment)){
 						
 								echo "<script> alert('Semester Payment has been Paid Successfully')</script>";
-								 echo '<META  HTTP-EQUIV="Refresh" Content = "0.0001 ; URL = index.php?fee_receipt">';
+								 echo '<META  HTTP-EQUIV="Refresh" Content = "0.0001 ; URL = index1.php?fee_receipt1">';
 							//echo "<script> window.open('index.php?insert_product.php','_parent')</script>";
 							}
 							
 						}
 					
 									}
-				elseif ($pay_cat == 'Mess Fees') {
+				elseif($pay_cat == ' Mess Fees ') {
 					if ($mess_fee == 'Done') {
 							
 						 	echo "<script> alert('Sorry!!  Mess Fees Already Paid')</script>";
-							echo '<META  HTTP-EQUIV="Refresh" Content = "0.0001 ; URL = index.php?fee_receipt">';	
+							echo '<META  HTTP-EQUIV="Refresh" Content = "0.0001 ; URL = index1.php?fee_receipt1">';	
 						}
 					else {
 							$random = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
@@ -59,16 +68,19 @@
 							if(mysqli_query($con, $update_payment)){
 					
 								echo "<script> alert('Mess Payment has been Paid Successfully')</script>";
-								 echo '<META  HTTP-EQUIV="Refresh" Content = "0.0001 ; URL = index.php?fee_receipt">';
+								 echo '<META  HTTP-EQUIV="Refresh" Content = "0.0001 ; URL = index1.php?fee_receipt1">';
 							//echo "<script> window.open('index.php?insert_product.php','_parent')</script>";
 					}
 					}
 				}
-				elseif ($pay_cat == 'Other Fees') {
-					if ($other_fee == 'Done') {
+				elseif ($pay_cat == ' Other Fees ') {
+                    if($pay_fee == 0){
+                            echo "<script> alert('Sorry!!  Other Fees is Rs:0, You can not Pay Zero Amount')</script>";
+							echo '<META  HTTP-EQUIV="Refresh" Content = "0.0001 ; URL = index1.php?fee_receipt1">';	}
+					elseif ($other_fee == 'Done') {
 							
 						 	echo "<script> alert('Sorry!!  Other Fees Already Paid')</script>";
-							echo '<META  HTTP-EQUIV="Refresh" Content = "0.0001 ; URL = index.php?fee_receipt">';	
+							echo '<META  HTTP-EQUIV="Refresh" Content = "0.0001 ; URL = index1.php?fee_receipt1">';	
 						}
 					else {
 							$random = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
@@ -77,7 +89,7 @@
 						if(mysqli_query($con, $update_payment)){
 					
 							echo "<script> alert('Other Payment has been Paid Successfully')</script>";
-							 echo '<META  HTTP-EQUIV="Refresh" Content = "0.0001 ; URL = index.php?fee_receipt">';
+							 echo '<META  HTTP-EQUIV="Refresh" Content = "0.0001 ; URL = index1.php?fee_receipt1">';
 				}
 				}
 				}
@@ -89,6 +101,6 @@
 				
 				
 		}
-        else
-        {}
+      }
+}
 ?>

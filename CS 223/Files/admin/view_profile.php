@@ -1,8 +1,13 @@
 <?php 
-if(!isset($_SESSION['user_email'])){
-	
-	echo " <script> window.open('login.php?not_admin=You are not an Admin!','_self')</script>";
-}
+if(isset($_SESSION['user_email'])){
+  
+    echo " <script> window.open('index1.php?view_profile1','_self')</script>";
+    }
+
+    elseif(!isset($_SESSION['user_email1'])){
+  
+    echo " <script> window.open('../index.php','_self')</script>";
+    }
 else{
 
 
@@ -13,7 +18,7 @@ else{
   
   //if(isset($_GET['user_email'])){
 	  
-	  $get_id = $_SESSION['user_email'];
+	  $get_id = $_SESSION['user_email1'];
    // echo $get_id;
 	  
     $get_pro = "SELECT*FROM admins WHERE admin_email= '$get_id'";
@@ -29,8 +34,13 @@ else{
 	    $ad_cat = $row_pro['catagory'];
         $year = $row_pro['year'];
 		  $ad_cont = $row_pro['contect'];
-      $ad_addr = $row_pro['address'];  
-        
+      $ad_addr = $row_pro['address']; 
+   // $last_date = '2016-04-12';
+   // echo $last_date ;
+    $get_pro1 = "SELECT*FROM feelastdate WHERE id = '1'";
+    $run_pro1 = mysqli_query($con,$get_pro1);
+    $row_pro1 = mysqli_fetch_array($run_pro1);   
+    $last_date = $row_pro1['last_date'];    
   //}
   
 ?>
@@ -81,6 +91,11 @@ else{
       <tr>
           <th>Address</th>
           <th> <?php echo $ad_addr ?> </th>
+      </tr>
+      
+      <tr>
+          <th>Last Date Of Fee Submission </th>
+          <th> <?php echo $last_date ?> </th>
       </tr>
       
    

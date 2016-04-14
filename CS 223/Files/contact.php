@@ -47,20 +47,20 @@
               <h3 class="masthead-brand">Online Fees Management System</h3>
               <nav>
                 <ul class="nav masthead-nav">
-                  <li class='active'><a href="index.php">Home</a></li>
-                  <li><a href="contact.php">Contact</a></li>
+                  <li><a href="index.php">Home</a></li>
+                  <li class="active"><a href="contact.php">Contact</a></li>
                 </ul>
               </nav>
             </div>
           </div>
 
           <div class="inner cover">
-            <h1 class="cover-heading">Select Your Role</h1>
-            <p class="lead">Fee Management System Made Easy.</p>
-            <p class="lead">
-              <a href="admin/login.php?User=<?php echo "Student" ?>"class="btn btn-lg btn-default">Student Login</a>
-                <a href="admin/login.php?User=<?php echo "Admin" ?>"class="btn btn-lg btn-default">Admin Login</a>  
-            </p>
+            
+            <p class="lead">contact name</p>
+              <p class="lead">contact email</p>
+              <p class="lead">9876543210</p>
+              <p class="lead">address</p>
+            
           </div>
 
 

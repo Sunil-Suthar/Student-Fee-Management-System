@@ -1,8 +1,13 @@
 <?php 
-if(!isset($_SESSION['user_email'])){
+if(isset($_SESSION['user_email'])){
   
-  echo " <script> window.open('login.php?not_admin=You are not an Admin!','_self')</script>";
-}
+    echo " <script> window.open('index1.php?view_profile1','_self')</script>";
+    }
+
+    elseif(!isset($_SESSION['user_email1'])){
+  
+    echo " <script> window.open('../index.php','_self')</script>";
+    }
 else{
   ?>
 <!DOCTYPE html>
@@ -29,13 +34,17 @@ else{
         <th> UG/PG </th>
         <th>Year</th>
         
-        <th>Complain Subject</th>  
+        <th>Complain Subject</th>
+        <th>Complaint Status</th>  
         <th>View</th>              
       </tr>
     <?php
 include('includes/connection.php');
 
-$get_pro = "SELECT*FROM complain ";
+$get_pro = "SELECT*FROM complain 
+            ORDER BY (CASE comp_status
+            WHEN 'PENDING'   THEN 2
+            ELSE 1 END) ASC , comp_time ASC ;";
 $run_pro = mysqli_query($con,$get_pro);
 $i = 0;
 while($row_pro = mysqli_fetch_array($run_pro)){
@@ -46,6 +55,7 @@ while($row_pro = mysqli_fetch_array($run_pro)){
   $stu_cat2 = $row_pro['student_cat2'];
   $stu_year = $row_pro['student_year'];
   $comp_sub = $row_pro['complain_sub'];
+  $comp_status = $row_pro['comp_status'];
   $i++;
 ?>
 <tr>
@@ -56,7 +66,13 @@ while($row_pro = mysqli_fetch_array($run_pro)){
 <td><?php echo $stu_cat2 ?> </td>
 <td><?php echo $stu_year ?> </td>
 <td><?php echo $comp_sub ?> </td>
-<td><a href = "index.php?view_comp=<?php echo $stu_id; ?>">View</a></td>
+<td> <?php if ($comp_status == 'PENDING') {
+  ?> PENDING <?php 
+}
+else{
+  ?> Approved By <?php echo $comp_status; 
+  } ?></td>
+<td><a href = "index.php?view_comp=<?php echo $stu_id;?> & view_sub=<?php echo $comp_sub; ?>">View</a></td>
 </tr>
 
 <?php } ?>        

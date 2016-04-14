@@ -1,8 +1,13 @@
 <?php
-if(!isset($_SESSION['user_email'])){
-	
-	echo " <script> window.open('login.php?not_admin=You are not an Admin!','_self')</script>";
-}
+if(isset($_SESSION['user_email'])){
+  
+    echo " <script> window.open('index1.php?view_profile1','_self')</script>";
+    }
+
+    elseif(!isset($_SESSION['user_email1'])){
+  
+    echo " <script> window.open('../index.php','_self')</script>";
+    }
 else{
 	?>
 
@@ -30,29 +35,14 @@ else{
 	    $stu_cat2 = $row_pro['student_cat2'];
         $year = $row_pro['year'];
 		$stu_year = $row_pro['student_year'];
+    $stu_other_fee = $row_pro['Other_Fee_Charge'];
 		$stu_addr = $row_pro['student_addr'];
 		$stu_contect = $row_pro['student_contect'];
         $stu_pass = $row_pro['student_pass'];
         $sem_fee = $row_pro['semester_fee'];
         $mess_fee = $row_pro['mess_fee'];
         $other_fee = $row_pro['other_fee'];
-		
-		//$get_cat = "SELECT*FROM categories WHERE cat_id = '$pro_cat'";
-		
-		//$run_cat = mysqli_query($con, $get_cat);
-		
-		//$row_cat = mysqli_fetch_array($run_cat);
-		
-		//$category_name = $row_cat['cat_name'];
-		
-		//$get_brand = "SELECT*FROM brands WHERE brand_id = '$pro_brand'";
-		
-		//$run_brand = mysqli_query($con, $get_brand);
-		
-		//$row_brand = mysqli_fetch_array($run_brand);
-		
-		//$brand_name = $row_brand['brand_name'];
-  }
+	}
   
 ?>
 
@@ -106,7 +96,8 @@ else{
                                         <select name="student_cat2">
                                         <option > <?php echo $stu_cat2; ?></option>
                                         <option>UG</option>
-                                        <option>PG</option>
+                                        <option>PHD</option>
+                                        <option>M.TECH</option>
                                         
                                         </select>
                     </div>
@@ -130,16 +121,25 @@ else{
                                         </select>
                     </div>
         </div>
+<div class="form-group">
+    <label class="control-label col-sm-2" for="student_other_fee">Other Fees</label>
+    <div class="col-sm-8"> 
+      <input type="number" class="form-control" name="student_other_fee" min = '0' max = '9999999999' value= "<?php echo $stu_other_fee ;?>" />
+    </div>
+  </div>
+
         <div class="form-group">
     <label class="control-label col-sm-2" for="student_addr">Address</label>
     <div class="col-sm-8"> 
       <input type="text" class="form-control" name="student_addr" value= "<?php echo $stu_addr;?>" />
     </div>
   </div>
+
+  
     <div class="form-group">
     <label class="control-label col-sm-2" for="student_contect">Contact Number</label>
     <div class="col-sm-8"> 
-      <input type="number" class="form-control" name="student_contect" value= "<?php  echo $stu_contect;?>" />
+      <input type="number" class="form-control" name="student_contect"  value= "<?php  echo $stu_contect;?>" />
     </div>
   </div>
         <div class="form-group">
@@ -203,6 +203,8 @@ else{
 				$student_cat2 = strip_tags($_POST['student_cat2']);
                 $year = strip_tags($_POST['year']);
 				$student_year = strip_tags($_POST['student_year']);
+        $student_other_fee = strip_tags($_POST['student_other_fee']);
+        
 				$student_addr = strip_tags($_POST['student_addr']);
 				$student_contect = $_POST['student_contect'];
                 $student_pass = $_POST['student_pass'];
@@ -224,7 +226,7 @@ else{
 				//$product_image_tmp=$_FILES['product_image']['tmp_name'];
 				//move_uploaded_file($product_image_tmp,"product_images/$product_image");
 				 
-			    $update_product= "UPDATE student SET student_name = '$student_name', student_email = '$student_email',student_cat1 = '$student_cat1', student_cat2 = '$student_cat2', year = '$year',student_year = '$student_year', student_addr = '$student_addr', student_contect = '$student_contect',student_pass = '$student_pass',semester_fee = '$s_fee',mess_fee = '$m_fee',other_fee = '$o_fee' WHERE student_id='$student_id'";  
+			    $update_product= "UPDATE student SET student_name = '$student_name', student_email = '$student_email',student_cat1 = '$student_cat1', student_cat2 = '$student_cat2', year = '$year',student_year = '$student_year',Other_Fee_Charge = '$student_other_fee',student_addr = '$student_addr', student_contect = '$student_contect',student_pass = '$student_pass',semester_fee = '$s_fee',mess_fee = '$m_fee',other_fee = '$o_fee' WHERE student_id='$student_id'";  
 				
 				$run_product = mysqli_query($con, $update_product); 
 				
@@ -236,4 +238,4 @@ else{
 				}
 		}
 ?>
-<?php }?>
+<?php } ?>

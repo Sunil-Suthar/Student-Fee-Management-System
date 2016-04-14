@@ -13,8 +13,10 @@
                 $student_email = strip_tags($_POST['student_email']); 
 				$student_cat1 = strip_tags($_POST['student_cat1']);
 				$student_cat2 = strip_tags($_POST['student_cat2']);
+				
 				$year = strip_tags($_POST['year']);
 				$student_year = strip_tags($_POST['student_year']);
+				$student_other_fee = strip_tags($_POST['student_other_fee']);
 				$student_addr = strip_tags($_POST['student_addr']);
 				$student_contect = $_POST['student_contect'];
                 $student_pass = $_POST['student_pass'];
@@ -41,12 +43,12 @@
   					echo '<META  HTTP-EQUIV="Refresh" Content = "0.0001 ; URL = index.php?add_student">';
   				}
   				else{
-  					$add_student= "INSERT INTO student(student_id,student_name,student_email,student_cat1,student_cat2,year,student_year,student_addr,student_contect,student_pass)VALUES('$student_id','$student_name','$student_email','$student_cat1','$student_cat2','$year','$student_year','$student_addr','$student_contect','$student_pass')";   
+  					$add_student= "INSERT INTO student(student_id,student_name,student_email,student_cat1,student_cat2,year,student_year,Other_Fee_Charge,student_addr,student_contect,student_pass)VALUES('$student_id','$student_name','$student_email','$student_cat1','$student_cat2','$year','$student_year','$student_other_fee','$student_addr','$student_contect','$student_pass')";   
 				
 				if(mysqli_query($con, $add_student)){
 					
 				echo "<script> alert('New Student has been inserted')</script>";
-				echo '<META  HTTP-EQUIV="Refresh" Content = "0.0000001 ; URL = index.php">';
+				echo '<META  HTTP-EQUIV="Refresh" Content = "0.0000001 ; URL = index.php?view_profile">';
   				}
   				}
   				

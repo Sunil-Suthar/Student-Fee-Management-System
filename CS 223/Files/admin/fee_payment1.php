@@ -5,13 +5,18 @@
  
  //include function file
   //include 'includes/connection.php';
-    if(!isset($_SESSION['user_email'])){
-	
-	  echo " <script> window.open('login.php?not_admin=You are not an Admin!!!','_self')</script>";
+   if(isset($_SESSION['user_email1'])){
+  
+    echo " <script> window.open('index.php?view_profile','_self')</script>";
+    }  
+
+  elseif(!isset($_SESSION['user_email'])){
+  
+    echo " <script> window.open('../index.php','_self')</script>";
     }
     else{
   
-  if(isset($_SESSION['user_email'])){
+  
       
       $get_id = $_SESSION['user_email'];
 
@@ -32,13 +37,14 @@
         $stu_cat2 = $row_pro['student_cat2'];
         $year = $row_pro['year'];
         $stu_year = $row_pro['student_year'];
-        $stu_addr = $row_pro['student_addr'];
-        $stu_contect = $row_pro['student_contect'];
-        $stu_pass = $row_pro['student_pass'];
-        $sem_fee = $row_pro['semester_fee'];
-
+       
+     $get_pro1 = "SELECT*FROM feelastdate WHERE id = '1'";
+    $run_pro1 = mysqli_query($con,$get_pro1);
+    $row_pro1 = mysqli_fetch_array($run_pro1);   
+    $last_date = $row_pro1['last_date'];             
+   $t=time();
+    
         
-  }
 ?>
  
 <!DOCTYPE html>
@@ -49,10 +55,16 @@
                    <script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
                         <script>tinymce.init({selector:'textarea'});</script>                 
 </head>
+    
+            
 <body bgcolor="#ededeb">
 <div class="container">
+    <?php 
+        if($last_date >= date("Y-m-d",$t)){
+            
+?>
     <h2 align="center">Fee Payment</h2>
-    <form class="form-horizontal" role="form" action="payment_fee.php" method="post" enctype="multipart/form-data">
+    <form class="form-horizontal" role="form" action="index1.php?fee_pay_conf" method="post" enctype="multipart/form-data">
   <fieldset disabled>
   <div class="form-group">
     <label class="control-label col-sm-2">Student ID</label>
@@ -85,7 +97,7 @@
     <label class="control-label col-sm-2">Payment Category</label>
                    <div class="col-sm-8"> 
                                         <select name="payment_cat" required>
-                                        <option value = ""> Select Cataory</option>
+                                        <option value = ""> Select Category</option>
                                         <option value = "Semester Fees" >Semester Fees</option>
                                         <option value = "Mess Fees">Mess Fees</option>
                                         <option value = "Other Fees">Other Fees</option>
@@ -96,7 +108,7 @@
     <label class="control-label col-sm-2">Payment Mode</label>
                    <div class="col-sm-8"> 
                                          <select name="payment_mode" required>
-                                        <option value = ""> Select mode</option>
+                                        <option value = ""> Select Mode</option>
                                         <option value = "Net Banking">Net Banking</option>
                                         <option value = "Debit/Credit Card">Debit/Credit Card</option>
                                         <option value = "DD">DD</option>
@@ -107,12 +119,20 @@
        
   
   <div class="form-group"> 
-    <div class="col-sm-offset-2 col-sm-10">
+    <div class="col-sm-offset-5 col-sm-10">
       <button type="submit" class="btn btn-default" name="update_post" value="Pay Fees Now" required>Pay Fees</button>
     </div>
   </div>
-</form>    
-      </div>
+</form>  
+<?php } 
+    else {
+        ?>
+    <h2 align="center">Fee Payment Portal Has Been Closed </h2>
+<?php  }    ?>    
+    
+</div>
 </body>
+    
+
 </html>
 <?php } ?>

@@ -1,8 +1,13 @@
 <?php 
-if(!isset($_SESSION['user_email'])){
-	
-	echo " <script> window.open('login.php?not_admin=You are not an Admin!','_self')</script>";
-}
+if(isset($_SESSION['user_email'])){
+  
+    echo " <script> window.open('index1.php?view_profile1','_self')</script>";
+    }
+
+    elseif(!isset($_SESSION['user_email1'])){
+  
+    echo " <script> window.open('../index.php','_self')</script>";
+    }
 else{
 
 
@@ -28,6 +33,7 @@ else{
 	    $stu_cat2 = $row_pro['student_cat2'];
         $year = $row_pro['year'];
 		$stu_year = $row_pro['student_year'];
+    $stu_other_fee = $row_pro['Other_Fee_Charge'];
 		$stu_addr = $row_pro['student_addr'];
 		$stu_contect = $row_pro['student_contect'];
         $stu_pass = $row_pro['student_pass'];
@@ -103,6 +109,10 @@ else{
       <tr>
           <th>Academic Year</th>
           <th> <?php echo $stu_year ?> </th>
+      </tr>
+      <tr>
+          <th>Other Fee </th>
+          <th> <?php echo $stu_other_fee ?> </th>
       </tr>
       <tr>
           <th>Address</th>

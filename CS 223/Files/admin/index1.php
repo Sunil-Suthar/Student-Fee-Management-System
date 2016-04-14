@@ -1,11 +1,17 @@
 <?php session_start(); ?>
 
 <?php
+  if(isset($_SESSION['user_email1'])){
+  
+    echo " <script> window.open('index.php?view_profile','_self')</script>";
+    }  
 
-if(!isset($_SESSION['user_email'])){
-	
-	echo " <script> window.open('login.php','_self')</script>";
-}
+  elseif(!isset($_SESSION['user_email'])){
+  
+    echo " <script> window.open('../index.php','_self')</script>";
+    }
+
+  
 else{
 	
 ?>
@@ -57,15 +63,15 @@ else{
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php?view_profile">Student Login Page</a>
+            <a class="navbar-brand" href="index1.php?view_profile1">Student Login Page</a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li><a href="index.php?view_profile">View Profile</a></li>
-              <li><a href="index.php?fee_structure">Fee Structure</a></li>
-              <li><a href="index.php?fee_payment">Payment</a></li>
-                <li><a href="index.php?fee_receipt">Fee Receipt</a></li>
-                <li><a href="index.php?complain">Complaints</a></li>
+              <li><a href="index1.php?view_profile1">View Profile</a></li>
+              <li><a href="index1.php?fee_structure1">Fee Structure</a></li>
+              <li><a href="index1.php?fee_payment1">Payment</a></li>
+                <li><a href="index1.php?fee_receipt1">Fee Receipt</a></li>
+                <li><a href="index1.php?complain1">Complaints</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
             
@@ -82,72 +88,40 @@ else{
 			
 			//include("view_profile.php");
 		  //}
-		  if(isset($_GET['view_profile'])){
-			include("view_profile.php");
+		  if(isset($_GET['view_profile1'])){
+			include("view_profile1.php");
 			//echo '<META  HTTP-EQUIV="Refresh" Content = "0.0001 ; URL = index.php">';
 		  }
 
 		  
-		  if(isset($_GET['fee_payment'])){
+		  if(isset($_GET['fee_payment1'])){
 			
-			include("fee_payment.php");
+			include("fee_payment1.php");
 		  }
 		  
-		  if(isset($_GET['fee_structure'])){
-			  include("fee_structure.php");
+        if(isset($_GET['payment_fee1'])){
+			
+			include("payment_fee1.php");
+		  }
+		  if(isset($_GET['fee_structure1'])){
+			  include("fee_structure1.php");
 		  }
 		  
-		  if(isset($_GET['edit_pro'])){
-			  include("edit_pro.php");
+		  if(isset($_GET['edit_pro1'])){
+			  include("edit_pro1.php");
 		  }
 
-		  if(isset($_GET['complain'])){
-			  include("complain.php");
+		  if(isset($_GET['complain1'])){
+			  include("complain1.php");
 		  }
 		  
-		  if(isset($_GET['fee_receipt'])){
-			  include("fee_receipt.php");
+		  if(isset($_GET['fee_receipt1'])){
+			  include("fee_receipt1.php");
 		  }
-		  
-		  if(isset($_GET['view_cats'])){
-			
-			  include("view_cats.php");
+		  if(isset($_GET['fee_pay_conf'])){
+			  include("fee_pay_conf.php");
 		  }
-		  
-		  if(isset($_GET['edit_cat'])){
-			  include("edit_cat.php");
-		  }
-		  
-		  if(isset($_GET['delete_cat'])){
-			  include("delete_cat.php");
-		  }
-		  
-		  if(isset($_GET['insert_brand'])){
-			  include("insert_brand.php");
-		  }
-		  
-		  if(isset($_GET['view_brands'])){
-			
-			  include("view_brands.php");
-		  }
-		  
-		  if(isset($_GET['edit_brand'])){
-			  include("edit_brand.php");
-		  }
-		  
-		  if(isset($_GET['delete_brand'])){
-			  include("delete_brand.php");
-		  }
-		  
-		   if(isset($_GET['view_customers'])){
-			
-			  include("view_customers.php");
-		  }
-		  if(isset($_GET['delete_customer'])){
-			
-			  include("delete_customer.php");
-		  }
-		  
+		
 	      ?>
   
           
